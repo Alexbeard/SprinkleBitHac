@@ -2,7 +2,7 @@ package com.sprinklebit.model;
 
 import javafx.util.Pair;
 
-public class SlidePair {
+public class SlidePair implements BaseSlide{
     private Slide first;
     private Slide second;
 
@@ -12,6 +12,6 @@ public class SlidePair {
     }
 
     public String getSlidePair() {
-        return "" + first.getId() + " " + second.getId() ;
+        return "" + first.getId() + " " + second.getId();
     }
 }

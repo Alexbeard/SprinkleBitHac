@@ -1,8 +1,10 @@
 package com.sprinklebit.model;
 
+import com.sun.deploy.util.Base64Wrapper;
+
 import java.util.List;
 
-public class Slide {
+public class Slide implements BaseSlide {
 
     private int id;
     private Orientation orientation;
