@@ -30,7 +30,7 @@ public class ReaderWriter {
     }
 
 
-    public static void write(List<String> result, String fileName) throws IOException {
+    public static void write(String result, String fileName) throws IOException {
         PrintWriter writer = null;
 
         File file = new File(PATH_OUT + fileName);
@@ -41,15 +41,13 @@ public class ReaderWriter {
             } else {
                 throw new IOException("Failed to create directory " + file.getParent());
             }
-        }else {
+        } else {
             file.createNewFile();
         }
 
         try {
             writer = new PrintWriter(file, "UTF-8");
-            for (String s : result) {
-                writer.println(s);
-            }
+            writer.println(result);
             writer.close();
         } catch (
                 UnsupportedEncodingException e) {
