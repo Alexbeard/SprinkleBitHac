@@ -1,9 +1,6 @@
 package com.sprinklebit;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.PrintWriter;
-import java.io.UnsupportedEncodingException;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -11,8 +8,12 @@ import java.util.Scanner;
 
 public class ReaderWriter {
 
+    private static String PATH_IN = "resources/in/";
+    private static String PATH_OUT = "resources/out/";
+
+
     public static List<String> read(String fileName) {
-        File file = new File(fileName);
+        File file = new File(PATH_IN + fileName);
         List<String> list = new ArrayList<>();
         try {
             Scanner sc = new Scanner(file);
@@ -29,16 +30,23 @@ public class ReaderWriter {
     }
 
 
-    public static void write(List<String> result, String fileName) {
+    public static void write(List<String> result, String fileName) throws IOException {
         PrintWriter writer = null;
+
+        File file = new File(PATH_OUT + fileName);
+
+        if (file.getParentFile().mkdir()) {
+            file.createNewFile();
+        } else {
+            throw new IOException("Failed to create directory " + file.getParent());
+        }
+
         try {
-            writer = new PrintWriter(fileName, "UTF-8");
+            writer = new PrintWriter(file, "UTF-8");
             for (String s : result) {
                 writer.println(s);
             }
             writer.close();
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
         } catch (UnsupportedEncodingException e) {
             e.printStackTrace();
         } finally {
