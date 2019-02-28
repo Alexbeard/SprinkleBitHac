@@ -1,30 +1,37 @@
 package com.sprinklebit.model;
 
-import java.util.List;
+import com.sun.istack.internal.Nullable;
 
 public class Slide {
+    private Image first;
+    private Image second;
 
-    private int id;
-    private Orientation orientation;
-    private List<String> tags;
-
-    public Slide(int id, Orientation orientation, List<String> tags) {
-        this.id = id;
-        this.orientation = orientation;
-        this.tags = tags;
+    public Slide(Image first, @Nullable Image second) {
+        this.first = first;
+        this.second = second;
     }
 
-    public int getId() {
-        return id;
+    public Image getFirst() {
+        return first;
     }
 
-    public Orientation getOrientation() {
-        return orientation;
+    public void setFirst(Image first) {
+        this.first = first;
     }
 
-    public List<String> getTags() {
-        return tags;
+    public Image getSecond() {
+        return second;
     }
 
+    public void setSecond(Image second) {
+        this.second = second;
+    }
 
+    public String getSlidePair() {
+        if (second != null) {
+            return "" + first.getId() + " " + second.getId();
+        } else {
+            return "" + first.getId();
+        }
+    }
 }

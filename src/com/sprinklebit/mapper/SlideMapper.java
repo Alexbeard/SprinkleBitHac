@@ -1,14 +1,14 @@
 package com.sprinklebit.mapper;
 
 import com.sprinklebit.model.Orientation;
-import com.sprinklebit.model.Slide;
+import com.sprinklebit.model.Image;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 
 public class SlideMapper {
 
-    public static Slide map(int number, String slideDescription) {
+    public static Image map(int number, String slideDescription) {
         String[] characteristic = slideDescription.split(" ");
 
         Orientation orientation = Orientation.Vertical;
@@ -18,6 +18,6 @@ public class SlideMapper {
 
         ArrayList<String> tags = new ArrayList<>(Arrays.asList(characteristic).subList(2, characteristic.length));
 
-        return new Slide(number, orientation, tags);
+        return new Image(number, orientation, tags);
     }
 }

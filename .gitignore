@@ -3,6 +3,7 @@
 
 *.class
 build/
+out/
 
 .DS_Store
 

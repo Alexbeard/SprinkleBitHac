@@ -1,12 +1,12 @@
 package com.sprinklebit.mapper;
 
-import com.sprinklebit.model.Slide;
+import com.sprinklebit.model.Image;
 
 import java.util.List;
 
 public class FileSlideMapper {
 
-    public static String map(List<Slide> slides) {
+    public static String map(List<Image> slides) {
         StringBuffer stringBuffer = new StringBuffer();
 
         stringBuffer.append(slides.size()).append("\n");
