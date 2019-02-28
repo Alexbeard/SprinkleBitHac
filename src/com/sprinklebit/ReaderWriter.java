@@ -35,10 +35,14 @@ public class ReaderWriter {
 
         File file = new File(PATH_OUT + fileName);
 
-        if (file.getParentFile().mkdir()) {
+        if (!file.getParentFile().exists()) {
+            if (file.getParentFile().mkdir()) {
+                file.createNewFile();
+            } else {
+                throw new IOException("Failed to create directory " + file.getParent());
+            }
+        }else {
             file.createNewFile();
-        } else {
-            throw new IOException("Failed to create directory " + file.getParent());
         }
 
         try {
@@ -47,7 +51,8 @@ public class ReaderWriter {
                 writer.println(s);
             }
             writer.close();
-        } catch (UnsupportedEncodingException e) {
+        } catch (
+                UnsupportedEncodingException e) {
             e.printStackTrace();
         } finally {
             writer.close();
